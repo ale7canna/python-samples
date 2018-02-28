@@ -1,13 +1,46 @@
-import module as asd
 from PageDownloader import PageDownloader
+import time
+from datetime import datetime
+import os.path
+
+def do_work():
+    with open("values.csv", "a") as f:
+        pd = PageDownloader()
+        pd.getPage("https://cambiavalute.ch/?accepted=true")
+        cvv = pd.getCambiaValuteValue()
+
+        pd.getPage("http://www.xe.com/it/currencyconverter/convert/?From=CHF&To=EUR")
+        xev = pd.getXeChangePage()
+
+
+        diff = xev - cvv;
+        diffPerc = 100 * diff / xev;
+
+        a = datetime.now().isoformat(timespec="seconds")
+        b = cvv
+        c = xev
+        d = diff
+        e = diffPerc
+
+        line = f"\"{a}\";\"{b}\";\"{c}\";\"{d}\";\"{e}\";"
+        f.write(line)
+
+def pre_checks():
+    if (not os.path.exists("values.csv")):
+        with open("values.csv", "w") as f:
+
+            a = "Giorno e ora"
+            b = "CambiaValute"
+            c = "Xe Change"
+            d = "Difference"
+            e = "Diff Percentage"
+
+            line = f"\"{a}\";\"{b}\";\"{c}\";\"{d}\";\"{e}\";"
+            f.write(line)
 
 if __name__ == "__main__":
-    t = asd.myadd(1, 2, 3)
-    print (t)
-
-    pd = PageDownloader()
-    pd.getPage("https://cambiavalute.ch/?accepted=true")
-    print (pd.getCambiaValuteValue())
-
-    pd.getPage("http://www.xe.com/it/currencyconverter/convert/?From=CHF&To=EUR")
-    print (pd.getXeChangePage())
+    print ("Daemon starts with his work...")
+    pre_checks()
+    while True:
+        do_work()
+        time.sleep(60)
