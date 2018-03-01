@@ -6,7 +6,7 @@ from datetime import datetime
 import os.path
 
 def do_work():
-    with open("values.csv", "a") as f:
+    with open("result/values.csv", "a") as f:
         pd = PageDownloader()
         pd.getPage("https://cambiavalute.ch/?accepted=true")
         cvv = pd.getCambiaValuteValue()
@@ -24,12 +24,12 @@ def do_work():
         d = diff
         e = diffPerc
 
-        line = f""""{a}";"{b}";"{c}";"{d}";"{e}";"""
+        line = f""""{a}";"{b}";"{c}";"{d}";"{e}";\n"""
         f.write(line)
 
 def pre_checks():
-    if (not os.path.exists("values.csv")):
-        with open("values.csv", "w") as f:
+    if (not os.path.exists("result/values.csv")):
+        with open("result/values.csv", "w") as f:
 
             a = "Giorno e ora"
             b = "CambiaValute"
@@ -37,7 +37,7 @@ def pre_checks():
             d = "Difference"
             e = "Diff Percentage"
 
-            line = f""""{a}";"{b}";"{c}";"{d}";"{e}";"""
+            line = f""""{a}";"{b}";"{c}";"{d}";"{e}";\n"""
             f.write(line)
 
 if __name__ == "__main__":
