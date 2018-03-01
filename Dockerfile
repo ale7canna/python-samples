@@ -1,13 +1,11 @@
-FROM python:2.7-slim
+FROM python:3.6-slim AS build-env
 
 WORKDIR /app
-
 ADD . /app
 
-RUN pip install --trusted-host pypi.python.org
+RUN pip install -r requirements.txt
 
-EXPOSE 80
-
-ENV NAME world
-
-CMD ["python", "main.py"]
+#FROM gcr.io/distroless/python3
+#WORKDIR /app
+#COPY --from=build-env /app /app
+#COPY --from=build-env /usr/local/lib/python3.5/site-packages/ /usr/local/lib/python3.5/site-packages/

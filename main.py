@@ -1,3 +1,5 @@
+#!/bin/python
+
 from PageDownloader import PageDownloader
 import time
 from datetime import datetime
@@ -22,7 +24,7 @@ def do_work():
         d = diff
         e = diffPerc
 
-        line = f"\"{a}\";\"{b}\";\"{c}\";\"{d}\";\"{e}\";"
+        line = f""""{a}";"{b}";"{c}";"{d}";"{e}";"""
         f.write(line)
 
 def pre_checks():
@@ -35,7 +37,7 @@ def pre_checks():
             d = "Difference"
             e = "Diff Percentage"
 
-            line = f"\"{a}\";\"{b}\";\"{c}\";\"{d}\";\"{e}\";"
+            line = f""""{a}";"{b}";"{c}";"{d}";"{e}";"""
             f.write(line)
 
 if __name__ == "__main__":
