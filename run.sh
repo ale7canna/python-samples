@@ -1,1 +1,1 @@
-docker run -v /home/ale7canna/repos/python-samples:/app/result -w /app -ti coin-image python main.py
+docker run -ti -v $(pwd):/app/result -w /app coin-image python main.py
