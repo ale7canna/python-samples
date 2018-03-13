@@ -9,10 +9,17 @@ class ConnectionHelper:
 
     def get_connection(self):
         connection_string = "host='{}' dbname='postgres' user='postgres' password='postgres'".format(self.host)
-        conn = psycopg2.connect(connection_string)
-        return conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+        return psycopg2.connect(connection_string)
 
-    def execute_query(self, curs, query):
+    def execute_query(self, conn, query):
+        curs = conn.cursor()
+        curs.execute(query)
+        conn.commit()
+        curs.close()
+
+
+    def select_query(self, conn, query):
+        curs = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         curs.execute(query)
         row_count = 0
         result = ""

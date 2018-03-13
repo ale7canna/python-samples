@@ -1,5 +1,11 @@
 version: '3'
 services:
+  service:
+    build:
+      context: .
+      dockerfile: Dockerfile_service
+    volumes:
+      - .:/app
   application:
     build:
       context: .
@@ -12,4 +18,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile_postgres
+    ports:
+      - 5432:5432
 
