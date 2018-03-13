@@ -1,10 +1,15 @@
 version: '3'
 services:
   application:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile_application
     ports:
       - 80:5000
     volumes:
       - .:/app
   postgres-container:
-    image: postgres:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile_postgres
+

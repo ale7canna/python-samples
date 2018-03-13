@@ -1,0 +1,4 @@
+FROM postgres:alpine
+COPY creation_script.sql /docker-entrypoint-initdb.d/
+RUN echo 'ciao ciao'
+CMD ["postgres"]
