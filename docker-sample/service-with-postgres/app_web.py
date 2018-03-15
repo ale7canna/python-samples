@@ -17,7 +17,6 @@ def method():
 
 @app.route('/hello')
 def hello():
-    print("I'm printing...")
     return "hello everyone!"
 
 @app.route('/coin')
@@ -27,6 +26,5 @@ def coin():
     return line
 
 if __name__ == "__main__":
-    print("Hello from sample postgres connection")
     app.run(host="0.0.0.0", debug=True)
 

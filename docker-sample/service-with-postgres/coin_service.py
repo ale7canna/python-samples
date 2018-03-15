@@ -1,9 +1,7 @@
 #!/bin/python
 
 from PageDownloader import PageDownloader
-import time
 from datetime import datetime
-import os.path
 
 class CoinService:
     def get_change(self):

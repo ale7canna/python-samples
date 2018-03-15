@@ -17,7 +17,6 @@ class ConnectionHelper:
         conn.commit()
         curs.close()
 
-
     def select_query(self, conn, query):
         curs = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
         curs.execute(query)

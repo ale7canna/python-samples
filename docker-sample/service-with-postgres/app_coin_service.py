@@ -10,20 +10,17 @@ _coin_service = CoinService()
 
 def coin_service():
     while True:
-        #try:
-        coin_method()
-        #except:
-        #    print("Unexpected error:", sys.exc_info()[0])
+        try:
+            coin_method()
+        except:
+            print("Unexpected error:", sys.exc_info()[0])
         time.sleep(59)
 
 def coin_method():
-    print("trying to get data from web and to store to pg db")
     res = _coin_service.get_change()
     query = "INSERT INTO change_value (ts, value_cambia_valute, value_xe, value_diff, value_diff_perc) VALUES ('%s', %f, %f, %f, %f)" % (res[0], res[1], res[2], res[3], res[4])
-
     conn = _connection.get_connection()
     _connection.execute_query(conn, query)
-    print("data stored to db")
 
 if __name__ == "__main__":
     print("service starting...")
