@@ -30,4 +30,4 @@ def count():
     return 'Hello World! These are my greetings... I have been seen {} times.\n'.format(count)
 
 if __name__ == "__main__":
-    app.run(host=site_host, port=site_port, debug=True)
+    app.run()
