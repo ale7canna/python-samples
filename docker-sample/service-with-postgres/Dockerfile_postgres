@@ -1,3 +1,8 @@
 FROM postgres:alpine
+
+ENV POSTGRES_USER ale7canna
+ENV POSTGRES_PASSWORD 123123
+ENV POSTGRES_DB coin-db
+
 COPY creation_script.sql /docker-entrypoint-initdb.d/
 CMD ["postgres"]
