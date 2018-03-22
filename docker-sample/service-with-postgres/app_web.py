@@ -1,8 +1,8 @@
 #!/bin/python
 import time
 
-from my_modules import ConnectionHelper
-from coin_service import CoinService
+from shared.my_modules import ConnectionHelper
+from shared.coin_service import CoinService
 from flask import Flask
 
 app = Flask(__name__)

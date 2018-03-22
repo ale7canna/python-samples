@@ -2,22 +2,22 @@ version: '3'
 services:
   service:
     build:
-      context: .
-      dockerfile: Dockerfile_service
+      context: ./
+      dockerfile: service/Dockerfile
     volumes:
       - .:/app
   application:
     build:
-      context: .
-      dockerfile: Dockerfile_application
+      context: ./
+      dockerfile: application/Dockerfile
     ports:
       - 80:5000
     volumes:
       - .:/app
   postgres-container:
     build:
-      context: .
-      dockerfile: Dockerfile_postgres
+      context: ./postgres
+      dockerfile: Dockerfile
     ports:
       - 5432:5432
 
