@@ -6,7 +6,8 @@ from shared.coin_service import CoinService
 from flask import Flask
 
 app = Flask(__name__)
-_connection = ConnectionHelper("postgres-container")
+
+_connection = ConnectionHelper()
 _coin_service = CoinService()
 
 @app.route('/')
@@ -27,4 +28,3 @@ def coin():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
-

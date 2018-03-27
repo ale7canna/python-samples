@@ -6,6 +6,10 @@ services:
       dockerfile: service/Dockerfile
     volumes:
       - .:/app
+    environment:
+      - POSTGRESQL_USER=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=coindb
   application:
     build:
       context: ./
@@ -14,10 +18,16 @@ services:
       - 80:5000
     volumes:
       - .:/app
+    environment:
+      - POSTGRESQL_USER=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=coindb
   postgres-container:
     build:
       context: ./postgres
       dockerfile: Dockerfile
     ports:
       - 5432:5432
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
 

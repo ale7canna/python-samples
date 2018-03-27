@@ -3,4 +3,4 @@ WORKDIR /app
 COPY . /app
 EXPOSE 5000
 RUN pip install --no-cache-dir -r application/requirements.txt
-CMD ["python", "app_web.py"]
+CMD ["python", "-u", "app_web.py"]

@@ -1,11 +1,12 @@
 #!/bin/python
 import time
 import sys
+import os
 
 from shared.coin_service import CoinService
 from shared.my_modules import ConnectionHelper
 
-_connection = ConnectionHelper("postgres-container")
+_connection = ConnectionHelper()
 _coin_service = CoinService()
 
 def coin_service():
