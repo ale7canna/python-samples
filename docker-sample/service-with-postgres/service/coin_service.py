@@ -1,6 +1,6 @@
 #!/bin/python
 
-from shared.PageDownloader import PageDownloader
+from PageDownloader import PageDownloader
 from datetime import datetime
 
 class CoinService:

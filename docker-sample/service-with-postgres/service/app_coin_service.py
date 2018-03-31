@@ -4,7 +4,7 @@ import sys
 import os
 import requests
 
-from shared.coin_service import CoinService
+from coin_service import CoinService
 
 _coin_service = CoinService()
 

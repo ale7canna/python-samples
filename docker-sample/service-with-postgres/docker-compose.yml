@@ -2,20 +2,20 @@ version: '3'
 services:
   service:
     build:
-      context: ./
-      dockerfile: service/Dockerfile
+      context: ./service
+      dockerfile: Dockerfile
     volumes:
-      - .:/app
+      - ./service:/app
     environment:
       - SERVICE_ENDPOINT=http://application:5000/add
   application:
     build:
-      context: ./
-      dockerfile: application/Dockerfile
+      context: ./application
+      dockerfile: Dockerfile
     ports:
       - 80:5000
     volumes:
-      - .:/app
+      - ./application:/app
     environment:
       - POSTGRESQL_USER=postgres
       - POSTGRESQL_PASSWORD=postgres
