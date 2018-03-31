@@ -4,11 +4,19 @@ import time
 from shared.my_modules import ConnectionHelper
 from shared.coin_service import CoinService
 from flask import Flask
+from flask import request 
 
 app = Flask(__name__)
 
 _connection = ConnectionHelper()
 _coin_service = CoinService()
+
+@app.route('/add', methods=['POST'])
+def add_method():
+    content = request.form.get('querytoadd')
+    conn = _connection.get_connection()
+    _connection.execute_query(conn, content)
+    return 'OK'
 
 @app.route('/')
 def method():

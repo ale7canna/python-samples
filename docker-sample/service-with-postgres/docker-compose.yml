@@ -7,9 +7,7 @@ services:
     volumes:
       - .:/app
     environment:
-      - POSTGRESQL_USER=postgres
-      - POSTGRESQL_PASSWORD=postgres
-      - POSTGRESQL_DATABASE=coindb
+      - SERVICE_ENDPOINT=http://application:5000/add
   application:
     build:
       context: ./
