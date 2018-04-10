@@ -19,7 +19,7 @@ def add_method():
 @app.route('/')
 def method():
     conn = _connection.get_connection()
-    query = "SELECT * FROM change_value ORDER BY is DESC"
+    query = "SELECT * FROM change_value ORDER BY id DESC"
     return _connection.select_query(conn, query)
 
 @app.route('/hello')

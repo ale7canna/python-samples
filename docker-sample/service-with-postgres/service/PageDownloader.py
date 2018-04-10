@@ -6,11 +6,13 @@ class PageDownloader:
         self.page = requests.get(url).text
 
     def getCambiaValuteValue(self):
-        pattern = "cambio CHF/EUR "
-        start = str.find(self.page, pattern) + len(pattern) + 1
+        pattern = 'Tasso di cambio CHF/EUR <span id="chf_rate">'
+        start = str.find(self.page, pattern) + len(pattern)
         self.page = self.page[start:]
-        end = str.find(self.page, " ") + 1
-        return float(self.page[:end])
+
+        end = str.find(self.page, '</span>')
+        self.page = self.page[:end]
+        return float(self.page)
 
     def getXeChangePage(self):
         pattern = "<span class=\'uccResultAmount\'>"
